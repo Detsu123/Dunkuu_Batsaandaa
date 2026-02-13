@@ -180,8 +180,18 @@
     button.style.transition = 'left 0.3s ease, top 0.3s ease';
   }
 
+  // ORIGINAL
   runawayBtn.addEventListener('mouseenter', () => moveButton(runawayBtn));
   nopeBtn?.addEventListener('mouseenter', () => moveButton(nopeBtn));
+
+  // 🔥 ADDED FOR MOBILE
+  runawayBtn.addEventListener('pointerenter', () => moveButton(runawayBtn));
+  runawayBtn.addEventListener('pointerdown', () => moveButton(runawayBtn));
+  runawayBtn.addEventListener('touchstart', () => moveButton(runawayBtn));
+
+  nopeBtn?.addEventListener('pointerenter', () => moveButton(nopeBtn));
+  nopeBtn?.addEventListener('pointerdown', () => moveButton(nopeBtn));
+  nopeBtn?.addEventListener('touchstart', () => moveButton(nopeBtn));
 
   function handleThanks() {
     const audio = document.getElementById('birthday-audio');
@@ -212,7 +222,6 @@
       emoji.style.animation = `fall ${Math.random() * 3 + 3}s ease-in forwards`;
       emoji.style.zIndex = 999;
       emoji.style.pointerEvents = 'none';
-      emoji.style.transition = 'opacity 0.5s ease';
       document.body.appendChild(emoji);
       setTimeout(() => emoji.remove(), 6000);
     }
